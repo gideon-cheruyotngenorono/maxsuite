@@ -29,6 +29,7 @@
 .logo-text {
   font-size: 1.25rem;
   background: linear-gradient(90deg, var(--primary-accent), #4ade80);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 0;
@@ -43,6 +44,43 @@
   .main-nav {
     display: flex;
   }
+}
+
+/* Mobile menu button */
+.mobile-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+  .mobile-menu-btn { display: none; }
+}
+
+/* Mobile nav overlay */
+.main-nav.open {
+  position: absolute;
+  top: 70px;
+  left: 12px;
+  right: 12px;
+  background: rgba(10,10,15,0.95);
+  padding: 16px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 120;
+}
+
+/* Ensure nav links wrap and don't overflow */
+.main-nav a, .main-nav {
+  word-break: break-word;
 }
 
 .main-nav a {

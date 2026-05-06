@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Zap, Search } from 'lucide-react';
 import './Header.css';
@@ -8,6 +8,7 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <header className="sticky-header glass-card">
       <div className="container header-content">
@@ -16,7 +17,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
           <h1 className="logo-text">MAX PREMIUM SUITE</h1>
         </Link>
         
-        <nav className="main-nav">
+        <button className="mobile-menu-btn" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+          ☰
+        </button>
+
+        <nav className={`main-nav ${isOpen ? 'open' : ''}`}>
           <Link to="/">Home</Link>
           <Link to="/category/Streaming & Entertainment">Streaming</Link>
           <Link to="/category/Social & Communication">Social</Link>
