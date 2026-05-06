@@ -6,8 +6,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
-  padding: 40px;
+  gap: 24px;
+  padding: 24px;
   text-align: center;
   background: radial-gradient(circle at top left, rgba(139, 92, 246, 0.1), transparent 70%);
 }
@@ -21,17 +21,17 @@
 }
 
 .product-hero-logo {
-  width: 120px;
-  height: 120px;
+  width: clamp(80px, 14vw, 120px);
+  height: clamp(80px, 14vw, 120px);
   object-fit: contain;
   background: white;
-  padding: 16px;
-  border-radius: 20px;
+  padding: 12px;
+  border-radius: 18px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .product-name {
-  font-size: 2.5rem;
+  font-size: clamp(1.25rem, 4vw, 2.2rem);
   margin: 0 0 8px 0;
   color: #fff;
 }
@@ -115,7 +115,7 @@
 }
 
 .pricing-card {
-  padding: 32px;
+  padding: 20px;
   position: relative;
   cursor: pointer;
   border: 2px solid transparent;
@@ -319,19 +319,21 @@
 .number-box {
   background: rgba(0,0,0,0.3);
   border: 1px solid var(--glass-border);
-  padding: 16px 24px;
+  padding: 12px 18px;
   border-radius: 12px;
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .phone-number {
   font-family: var(--font-heading);
-  font-size: 2rem;
+  font-size: clamp(1.1rem, 4vw, 2rem);
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   color: #fff;
+  min-width: 0;
 }
 
 .btn-copy {
@@ -377,11 +379,11 @@
 .btn-whatsapp {
   background: #25D366;
   color: #fff;
-  padding: 16px 32px;
+  padding: 12px 18px;
   border-radius: 8px;
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
