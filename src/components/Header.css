@@ -6,55 +6,89 @@
   border-top: none;
   border-left: none;
   border-right: none;
-  margin-bottom: 2rem;
 }
 
 .header-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 24px;
+  padding: 10px 12px;
+  gap: 8px;
+}
+
+@media (min-width: 768px) {
+  .header-content {
+    padding: 14px 24px;
+  }
 }
 
 .logo-link {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-shrink: 0;
 }
 
 .electric-bolt {
   color: var(--primary-accent);
+  flex-shrink: 0;
 }
 
 .logo-text {
-  font-size: 1.25rem;
+  font-size: 0.95rem;
   background: linear-gradient(90deg, var(--primary-accent), #4ade80);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 0;
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .logo-text {
+    font-size: 1.25rem;
+  }
 }
 
 .coming-tag {
-  display: inline-block;
-  margin-top: 2px;
-  background: rgba(255,255,255,0.04);
-  color: var(--text-secondary);
-  padding: 4px 8px;
-  border-radius: 999px;
-  font-size: 0.68rem;
-  font-weight: 700;
+  display: none;
 }
 
+@media (min-width: 600px) {
+  .coming-tag {
+    display: inline-block;
+    margin-top: 2px;
+    background: rgba(255,255,255,0.04);
+    color: var(--text-secondary);
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-size: 0.65rem;
+    font-weight: 700;
+  }
+}
+
+/* Desktop nav */
 .main-nav {
   display: none;
-  gap: 24px;
+  gap: 20px;
 }
 
 @media (min-width: 1024px) {
   .main-nav {
     display: flex;
   }
+}
+
+.main-nav a {
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: color 0.2s;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.main-nav a:hover {
+  color: var(--primary-accent);
 }
 
 /* Mobile menu button */
@@ -65,11 +99,11 @@
   background: transparent;
   border: 1px solid var(--glass-border);
   color: var(--text-secondary);
-  padding: 8px 10px;
+  padding: 6px 10px;
   border-radius: 8px;
   cursor: pointer;
-  /* ensure it's visually at the far right on mobile */
-  margin-left: 12px;
+  flex-shrink: 0;
+  font-size: 1.1rem;
 }
 
 @media (min-width: 1024px) {
@@ -78,22 +112,27 @@
 
 /* Mobile nav overlay */
 .main-nav.open {
-  position: absolute;
-  top: 70px;
-  left: 12px;
-  right: 12px;
-  background: rgba(10,10,15,0.95);
-  padding: 16px;
-  border-radius: 12px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10,10,15,0.97);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 24px;
+  padding-top: 60px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  z-index: 120;
+  gap: 16px;
+  z-index: 200;
+  animation: fade-in 0.2s ease-out;
 }
 
-/* Ensure nav links wrap and don't overflow */
-.main-nav a, .main-nav {
-  word-break: break-word;
+.main-nav.open a {
+  font-size: 1.1rem;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 /* Close button inside mobile nav */
@@ -101,47 +140,65 @@
   background: transparent;
   border: none;
   color: var(--text-secondary);
-  font-size: 1.25rem;
-  align-self: flex-end;
-  margin-bottom: 8px;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 16px;
+  right: 20px;
   cursor: pointer;
+  padding: 8px;
 }
 
-/* Make header more compact on small screens */
-@media (max-width: 767px) {
-  .header-content { padding: 10px 12px; }
-  .logo-text { font-size: 1rem; }
-  .search-btn { padding: 6px 10px; font-size: 0.85rem; }
-  /* tagline removed; no styles needed */
+.mobile-close-btn:hover {
+  color: #fff;
 }
 
-.main-nav a {
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: color 0.2s;
-  color: var(--text-secondary);
-}
-
-.main-nav a:hover {
-  color: var(--primary-accent);
+/* Search button */
+.header-actions {
+  display: flex;
+  align-items: center;
 }
 
 .search-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
+  gap: 6px;
+  padding: 6px 10px;
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   background: rgba(0,0,0,0.2);
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .search-btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    gap: 8px;
+  }
+}
+
+.search-btn span {
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .search-btn span {
+    display: inline;
+  }
 }
 
 .search-btn kbd {
-  background: rgba(255,255,255,0.1);
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  font-family: var(--font-mono);
+  display: none;
 }
 
-/* tagline removed from markup */
+@media (min-width: 768px) {
+  .search-btn kbd {
+    display: inline;
+    background: rgba(255,255,255,0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+  }
+}

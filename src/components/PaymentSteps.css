@@ -1,42 +1,246 @@
-.payment-steps {
-  padding: 10px;
+/* ===== Payment Panel ===== */
+.payment-panel {
+  position: relative;
+  overflow: hidden;
   opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 260ms ease, transform 260ms ease;
-}
-.steps-list { display:flex; flex-direction:column; gap:10px; }
-.step { display:flex; gap:8px; align-items:flex-start; }
-.step-num { width:44px; height:44px; border-radius:50%; background:var(--primary-accent); color:#000; display:flex; align-items:center; justify-content:center; font-weight:800; }
-.step-body h4 { margin:0 0 6px 0; color:#fff; }
-.number-box.small { display:flex; gap:8px; align-items:center; margin-top:6px; background:rgba(255,255,255,0.02); padding:6px 10px; border-radius:8px; }
-.phone-number { font-weight:700; color:#fff; }
-.credentials-box { margin-top:8px; display:flex; flex-direction:column; gap:6px; }
-.credentials-meta { color:var(--text-secondary); font-size:0.92rem; }
-.step.first .step-num { background: #ffd54a; color: #000; font-size:1.25rem; width:60px; height:60px; }
-.step.first .prominent { font-size:1.18rem; font-weight:900; color:#fff; }
-.phone-number { font-size:1.25rem; letter-spacing:2px; }
-.credentials-box { background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)); padding:8px; border-radius:10px; border: 1px solid rgba(255,255,255,0.04); }
-.credentials-meta { display:block; margin-top:6px; }
-.muted { color:var(--text-secondary); font-size:0.9rem; margin-top:6px; }
-.next-actions { margin-top:8px; }
-.btn-copy { background: rgba(255,255,255,0.04); color:#fff; padding:6px 8px; border-radius:8px; display:inline-flex; gap:6px; align-items:center; }
-.btn-whatsapp.small { display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:8px; background:#25D366; color:#fff; text-decoration:none; }
-.btn-primary { padding:10px 16px; background:var(--primary-accent); color:#000; border-radius:8px; font-weight:700; }
-
-@media (max-width:480px) {
-  .number-box.small { flex-direction: column; align-items:flex-start; }
-  .btn-copy, .btn-whatsapp.small, .btn-primary { width: 100%; justify-content: center; }
-  .payment-steps { padding: 8px; }
-  .step.first .step-num { width:48px; height:48px; font-size:1.05rem; }
-  .phone-number { font-size:1.2rem; }
-  .credentials-box { padding:10px; }
+  transform: translateY(8px);
+  transition: opacity 300ms ease, transform 300ms ease;
 }
 
-/* mounted state for entrance */
-.payment-steps.mounted { opacity: 1; transform: translateY(0); }
+.payment-panel.mounted {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-/* subtle copy toast */
-.copy-toast { position: relative; margin-top:8px; display:inline-block; background: rgba(0,0,0,0.6); color:#fff; padding:6px 10px; border-radius:8px; font-weight:700; font-size:0.9rem; }
+.payment-accent-bar {
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+  border-radius: 16px 16px 0 0;
+}
 
-.btn-copy { transition: transform 120ms ease, background 120ms ease; }
-.btn-copy:active { transform: scale(0.98); }
+.payment-panel-inner {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Pay section */
+.pay-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pay-section-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.mpesa-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: #2D9B37;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pay-title {
+  margin: 0;
+  font-size: 1.15rem;
+  color: #fff;
+}
+
+.pay-subtitle {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.pay-subtitle strong {
+  color: var(--primary-accent);
+  font-size: 1.05rem;
+}
+
+/* Phone number row */
+.pay-number-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--glass-border);
+  padding: 12px 16px;
+  border-radius: 12px;
+}
+
+.pay-phone {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+  flex: 1;
+}
+
+.pay-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.pay-copy-btn:active {
+  transform: scale(0.96);
+}
+
+.pay-copy-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.pay-meta {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+}
+
+.pay-meta strong {
+  color: #fff;
+}
+
+/* Divider */
+.pay-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pay-divider::before,
+.pay-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--glass-border);
+}
+
+.pay-divider-text {
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+/* Instruction text */
+.pay-instruction {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.pay-instruction strong {
+  color: #fff;
+}
+
+/* WhatsApp button */
+.pay-whatsapp-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border-radius: 12px;
+  background: #25D366;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+}
+
+.pay-whatsapp-btn:hover {
+  background: #1fb855;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+/* Confirm button */
+.pay-confirm-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border-radius: 12px;
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pay-confirm-btn:hover {
+  border-color: var(--primary-accent);
+  color: var(--primary-accent);
+  background: rgba(0, 255, 136, 0.05);
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 480px) {
+  .payment-panel-inner {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .pay-number-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .pay-phone {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .pay-copy-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .pay-whatsapp-btn {
+    padding: 12px 16px;
+    font-size: 0.95rem;
+  }
+
+  .pay-confirm-btn {
+    padding: 12px 16px;
+    font-size: 0.88rem;
+  }
+
+  .mpesa-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+  }
+}

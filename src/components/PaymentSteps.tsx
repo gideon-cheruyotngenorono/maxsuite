@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './PaymentSteps.css';
-import { Check, Copy } from 'lucide-react';
+import { Copy, Check, MessageCircle } from 'lucide-react';
 
 interface PaymentStepsProps {
   price: number;
@@ -14,7 +14,6 @@ export const PaymentSteps: React.FC<PaymentStepsProps> = ({ price, phone, payerN
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // small entrance animation trigger
     const t = setTimeout(() => setMounted(true), 20);
     return () => clearTimeout(t);
   }, []);
@@ -23,51 +22,61 @@ export const PaymentSteps: React.FC<PaymentStepsProps> = ({ price, phone, payerN
     try {
       await navigator.clipboard.writeText(phone);
       setCopied(true);
-      setTimeout(() => setCopied(false), 1800);
+      setTimeout(() => setCopied(false), 2000);
     } catch (e) {
-      // fallback: do nothing
+      // fallback
     }
   };
 
+  const waLink = `https://wa.me/254701648600?text=${encodeURIComponent(`Hi, I have paid ${price} KSH for my order. Here is my M-Pesa screenshot.`)}`;
+
   return (
-  <div className={`payment-steps glass-card ${mounted ? 'mounted' : ''}`}>
-      <h3 className="section-title-sm">How to Purchase — Clear Steps</h3>
-      <div className="steps-list">
-        <div className="step first">
-          <div className="step-num">1</div>
-          <div className="step-body">
-            <h4>Send Payment</h4>
-            <p className="prominent">Send exactly <strong>{price} KSH</strong> to the account below using M-Pesa.</p>
-            <div className="credentials-box">
-              <div className="number-box small">
-                <span className="phone-number">{phone}</span>
-                <button className="btn-copy" onClick={handleCopy}><Copy size={14}/> Copy</button>
-              </div>
-              {copied && <div className="copy-toast">Copied!</div>}
-              <div className="credentials-meta">Payee: <strong>Manager's Account</strong> • Name: <strong>{payerName}</strong></div>
+    <div className={`payment-panel glass-card ${mounted ? 'mounted' : ''}`}>
+      {/* Top accent bar */}
+      <div className="payment-accent-bar"></div>
+
+      <div className="payment-panel-inner">
+        {/* Step 1: Pay */}
+        <div className="pay-section">
+          <div className="pay-section-header">
+            <div className="pay-icon mpesa-icon">M</div>
+            <div>
+              <h3 className="pay-title">Send via M-Pesa</h3>
+              <p className="pay-subtitle">Send exactly <strong>{price} KSH</strong> to:</p>
             </div>
+          </div>
+
+          <div className="pay-number-row">
+            <span className="pay-phone">{phone}</span>
+            <button className="pay-copy-btn" onClick={handleCopy}>
+              {copied ? <><Check size={14} /> Copied!</> : <><Copy size={14} /> Copy</>}
+            </button>
+          </div>
+          <div className="pay-meta">
+            Payee: <strong>{payerName}</strong>
           </div>
         </div>
 
-        <div className="step">
-          <div className="step-num">2</div>
-          <div className="step-body">
-            <h4>Send Proof</h4>
-            <p>After sending, take a screenshot of the M-Pesa receipt and send it via WhatsApp using the button below.</p>
-            <a className="btn-whatsapp small" href={`https://wa.me/254701648600?text=${encodeURIComponent('I have paid. Here is my screenshot.')}`} target="_blank" rel="noreferrer">💬 Send Screenshot on WhatsApp</a>
-          </div>
+        {/* Divider */}
+        <div className="pay-divider">
+          <span className="pay-divider-text">then</span>
         </div>
 
-        <div className="step">
-          <div className="step-num">3</div>
-          <div className="step-body">
-            <h4>Receive Access</h4>
-            <p>We verify payment in our system within <strong>2-30 minutes</strong>. Once confirmed, we will send the download link and credentials via WhatsApp.</p>
-            <div className="next-actions">
-              <button className="btn-primary" onClick={onConfirm}><Check size={16}/> I HAVE SENT THE MONEY</button>
-            </div>
-          </div>
+        {/* Step 2: Send proof via WhatsApp */}
+        <div className="pay-section">
+          <p className="pay-instruction">Screenshot the M-Pesa receipt and send it to us on WhatsApp. We'll deliver your access within <strong>2-30 minutes</strong>.</p>
+
+          <a className="pay-whatsapp-btn" href={waLink} target="_blank" rel="noreferrer">
+            <MessageCircle size={20} />
+            Send Screenshot on WhatsApp
+          </a>
         </div>
+
+        {/* Confirm */}
+        <button className="pay-confirm-btn" onClick={onConfirm}>
+          <Check size={16} />
+          I've Sent the Payment
+        </button>
       </div>
     </div>
   );
