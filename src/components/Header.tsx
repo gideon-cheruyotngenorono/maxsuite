@@ -15,7 +15,10 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
       <div className="container header-content">
         <Link to="/" className="logo-link">
           <Zap className="electric-bolt animate-pulse-icon" size={28} />
-          <h1 className="logo-text">MAX PREMIUM SUITE</h1>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <h1 className="logo-text">MAX PREMIUM SUITE</h1>
+            <span className="coming-tag">More cracked apps coming</span>
+          </div>
         </Link>
         
         <nav className={`main-nav ${isOpen ? 'open' : ''}`}>

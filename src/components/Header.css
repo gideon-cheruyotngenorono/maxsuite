@@ -35,6 +35,17 @@
   margin: 0;
 }
 
+.coming-tag {
+  display: inline-block;
+  margin-top: 2px;
+  background: rgba(255,255,255,0.04);
+  color: var(--text-secondary);
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
 .main-nav {
   display: none;
   gap: 24px;
