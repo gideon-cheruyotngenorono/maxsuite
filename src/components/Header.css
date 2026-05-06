@@ -83,6 +83,25 @@
   word-break: break-word;
 }
 
+/* Close button inside mobile nav */
+.mobile-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.25rem;
+  align-self: flex-end;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+/* Make header more compact on small screens */
+@media (max-width: 767px) {
+  .header-content { padding: 10px 12px; }
+  .logo-text { font-size: 1rem; }
+  .search-btn { padding: 6px 10px; font-size: 0.85rem; }
+  .tagline-banner { font-size: 0.75rem; padding: 4px 0; }
+}
+
 .main-nav a {
   font-size: 0.9rem;
   font-weight: 500;

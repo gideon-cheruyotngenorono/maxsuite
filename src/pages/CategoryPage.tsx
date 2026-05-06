@@ -9,6 +9,8 @@ export const CategoryPage: React.FC = () => {
   const { categoryId } = useParams<{ categoryId: string }>();
   
   const categoryApps = useMemo(() => {
+    if (!categoryId) return [];
+    if (categoryId === 'All') return allApps;
     return allApps.filter(app => app.category === categoryId);
   }, [categoryId]);
 

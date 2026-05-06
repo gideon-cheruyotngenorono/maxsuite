@@ -9,6 +9,7 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const closeMenu = () => setIsOpen(false);
   return (
     <header className="sticky-header glass-card">
       <div className="container header-content">
@@ -22,12 +23,14 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch }) => {
         </button>
 
         <nav className={`main-nav ${isOpen ? 'open' : ''}`}>
-          <Link to="/">Home</Link>
-          <Link to="/category/Streaming & Entertainment">Streaming</Link>
-          <Link to="/category/Social & Communication">Social</Link>
-          <Link to="/category/Design, Video & Creative">Creative</Link>
-          <Link to="/category/Developer & AI Platforms">Developer</Link>
-          <a href="#faq">FAQ</a>
+          <button className="mobile-close-btn" onClick={closeMenu} aria-label="Close menu">✕</button>
+          <Link to="/" onClick={closeMenu}>Home</Link>
+          <Link to="/category/All" onClick={closeMenu}>All</Link>
+          <Link to="/category/Streaming & Entertainment" onClick={closeMenu}>Streaming</Link>
+          <Link to="/category/Social & Communication" onClick={closeMenu}>Social</Link>
+          <Link to="/category/Design, Video & Creative" onClick={closeMenu}>Creative</Link>
+          <Link to="/category/Developer & AI Platforms" onClick={closeMenu}>Developer</Link>
+          <a href="#faq" onClick={closeMenu}>FAQ</a>
         </nav>
 
         <div className="header-actions">
