@@ -156,9 +156,10 @@ button {
 
 /* Container */
 .container {
-  max-width: 1200px;
+  /* reduced max-width to make containers less extended visually */
+  max-width: 900px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 16px;
 }
 
 /* Scrollbar */

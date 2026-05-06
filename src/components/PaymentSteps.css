@@ -1,32 +1,32 @@
 .payment-steps {
-  padding: 20px;
+  padding: 10px;
   opacity: 0;
   transform: translateY(6px);
   transition: opacity 260ms ease, transform 260ms ease;
 }
-.steps-list { display:flex; flex-direction:column; gap:16px; }
-.step { display:flex; gap:12px; align-items:flex-start; }
+.steps-list { display:flex; flex-direction:column; gap:10px; }
+.step { display:flex; gap:8px; align-items:flex-start; }
 .step-num { width:44px; height:44px; border-radius:50%; background:var(--primary-accent); color:#000; display:flex; align-items:center; justify-content:center; font-weight:800; }
 .step-body h4 { margin:0 0 6px 0; color:#fff; }
-.number-box.small { display:flex; gap:12px; align-items:center; margin-top:8px; background:rgba(255,255,255,0.02); padding:8px 12px; border-radius:8px; }
+.number-box.small { display:flex; gap:8px; align-items:center; margin-top:6px; background:rgba(255,255,255,0.02); padding:6px 10px; border-radius:8px; }
 .phone-number { font-weight:700; color:#fff; }
-.credentials-box { margin-top:10px; display:flex; flex-direction:column; gap:8px; }
-.credentials-meta { color:var(--text-secondary); font-size:0.95rem; }
+.credentials-box { margin-top:8px; display:flex; flex-direction:column; gap:6px; }
+.credentials-meta { color:var(--text-secondary); font-size:0.92rem; }
 .step.first .step-num { background: #ffd54a; color: #000; font-size:1.25rem; width:60px; height:60px; }
 .step.first .prominent { font-size:1.18rem; font-weight:900; color:#fff; }
-.phone-number { font-size:1.45rem; letter-spacing:2px; }
-.credentials-box { background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)); padding:12px; border-radius:12px; border: 1px solid rgba(255,255,255,0.04); }
+.phone-number { font-size:1.25rem; letter-spacing:2px; }
+.credentials-box { background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)); padding:8px; border-radius:10px; border: 1px solid rgba(255,255,255,0.04); }
 .credentials-meta { display:block; margin-top:6px; }
 .muted { color:var(--text-secondary); font-size:0.9rem; margin-top:6px; }
-.next-actions { margin-top:12px; }
-.btn-copy { background: rgba(255,255,255,0.04); color:#fff; padding:6px 10px; border-radius:8px; display:inline-flex; gap:8px; align-items:center; }
+.next-actions { margin-top:8px; }
+.btn-copy { background: rgba(255,255,255,0.04); color:#fff; padding:6px 8px; border-radius:8px; display:inline-flex; gap:6px; align-items:center; }
 .btn-whatsapp.small { display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:8px; background:#25D366; color:#fff; text-decoration:none; }
 .btn-primary { padding:10px 16px; background:var(--primary-accent); color:#000; border-radius:8px; font-weight:700; }
 
 @media (max-width:480px) {
   .number-box.small { flex-direction: column; align-items:flex-start; }
   .btn-copy, .btn-whatsapp.small, .btn-primary { width: 100%; justify-content: center; }
-  .payment-steps { padding: 12px; }
+  .payment-steps { padding: 8px; }
   .step.first .step-num { width:48px; height:48px; font-size:1.05rem; }
   .phone-number { font-size:1.2rem; }
   .credentials-box { padding:10px; }

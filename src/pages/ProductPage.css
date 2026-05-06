@@ -1,15 +1,15 @@
 .product-page {
-  padding-top: 40px;
+  padding-top: 20px;
 }
 
 .product-hero {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
-  padding: 24px;
+  gap: 12px;
+  padding: 12px;
   text-align: center;
-  background: radial-gradient(circle at top left, rgba(139, 92, 246, 0.1), transparent 70%);
+  background: radial-gradient(circle at top left, rgba(139, 92, 246, 0.08), transparent 70%);
 }
 
 @media (min-width: 768px) {
@@ -21,13 +21,13 @@
 }
 
 .product-hero-logo {
-  width: clamp(80px, 14vw, 120px);
-  height: clamp(80px, 14vw, 120px);
+  width: clamp(64px, 12vw, 96px);
+  height: clamp(64px, 12vw, 96px);
   object-fit: contain;
   background: white;
-  padding: 12px;
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  padding: 8px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
 }
 
 .product-name {
@@ -151,7 +151,7 @@
 }
 
 .big-price {
-  font-size: 3rem;
+  font-size: 2rem;
   color: #fff;
   font-weight: 700;
 }
@@ -195,7 +195,7 @@
 }
 
 .app-description, .install-guide {
-  padding: 32px;
+  padding: 16px;
 }
 
 /* Purchase vs Install spacing */
@@ -253,7 +253,7 @@
 .step-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
 }
 
 .step {
@@ -296,7 +296,7 @@
 
 /* Payment Flow */
 .payment-flow {
-  padding: 40px;
+  padding: 20px;
   text-align: center;
 }
 
@@ -341,17 +341,17 @@
 .number-box {
   background: rgba(0,0,0,0.3);
   border: 1px solid var(--glass-border);
-  padding: 12px 18px;
-  border-radius: 12px;
+  padding: 8px 12px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
 .phone-number {
   font-family: var(--font-heading);
-  font-size: clamp(1.1rem, 4vw, 2rem);
+  font-size: clamp(1rem, 3.5vw, 1.6rem);
   font-weight: 700;
   letter-spacing: 1px;
   color: #fff;
